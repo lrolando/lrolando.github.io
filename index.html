@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luciano Rolando - .NET Developer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #071244 0%, #22063e 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            animation: fadeIn 1s ease-in;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.5em;
+            opacity: 0.95;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .section h2 {
+            color: #071244;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #071244;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #071244 0%, #071244 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-card li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-card li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            min-height: 230px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .project-card:hover {
+            border-color: #071244;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card h3 {
+            color: #071244;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-content: center;
+        }
+
+        .tech-tag {
+            background: #071244;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #071244 0%, #071244 100%);
+            color: white;
+            border-radius: 10px;
+            min-width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 50px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Luciano Rolando</h1>
+        <p>  .NET Developer | 
+            <a href="LucianoRolandoCV.pdf" class="download-btn" download="LucianoRolandoCV.pdf" target="_blank">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <p style="font-size: 1.2em; text-align: center; color: #101010; line-height: 1;">
+                Software Developer with +3 years of experience in DotNet and SQL. Mainly backend and database developer working with Agile methodologies, applying SCRUM. Always looking forward to personal and profesional growth. Proactive person, and really interested in everything related to quality, agile frameworks, and automation. 
+                English level upper-intermediate, and constantly practicing it.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Experience</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>May 2023 - Present</h3>
+                    <p>
+                        Support work for internal and external management applications at Volotea airline. Bug fixes, modification of business requirements, new functionalities, developments, etc. Backend applications in .net, Reports with large SQL queries and SPA Angular applications. Hired through Kiteris.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3>September 2022 - April 2023</h3>
+                    <p>
+                        Works as a dotnet developer in a project started from scratch for the company “ROSS Outside the Box”.
+                        Project to manage notaries, acts of purchase and sale of real estate for the Cordoba province Government Backend developed in .Net6, database in Oracle and EntityFramework as ORM (CodeFirst).
+                        Use of agile methodologies to manage tasks and delivery times
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3>March 2021 - August 2022</h3>
+                    <p>
+                        Completed a .Net academy before started working, where was learned many tools, libraries, techniques and best practices for programming in .Net
+                        Worked creating new projects, new features and fixes for new systems and providing support to these systems and some existing systems. Worked with T-SQL(SQL Server), C# (.Net Core 3.1) (Visual Studio and Visual Studio Code) and AWS tools mainly
+                        Worked on the support and improvements of a system that manages the hiring process for jobs.
+                        Worked on the planning and development of a new job recruitment system started from scratch.
+                        Worked and collaborated in many recruitment systems.
+                        Also worked on a system that allows some files to be migrated for long-term archiving
+                        The project team used scrum methodology. In each sprint, we manage all the user stories through PBIs in Azure, which we also upload tasks to. The merges to the main branch were always done through a pull request that we reviewed and approved or commented on improvements to merge the best possible code. We did Dailies every day. Also in every sprint we did the meetings of "Preplanning", "Planning", "Retrospective", “Refinement”, etc
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <a href="https://github.com/lrolando/Web3-Api" style="text-decoration: none;" target="_blank">
+                    <div class="project-card">
+                        <h3>Web3-Api</h3>
+                        <p>Application that allow send, receive, and view the balance of an Ethereum crypto wallet. Can also view market rates.
+                            Built using Nethereum to interact with the Ethereum blockchain</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">.NET Core</span>
+                            <span class="tech-tag">Nethereum</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://github.com/lrolando/BackEndApp" style="text-decoration: none;" target="_blank">
+                    <div class="project-card">
+                        <h3>API REST Microservicios</h3>
+                        <p>Backend application made with .Net7 (C#)
+                            Implement clean architecture, SOLID patterns and design patterns like repository, DTOs, dependency injection.
+                         <div class="tech-tags">
+                            <span class="tech-tag">.NET Core</span>
+                            <span class="tech-tag">EntityFramework</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://github.com/lrolando/Bingo-JS" style="text-decoration: none;" target="_blank">
+                    <div class="project-card">
+                        <h3>Bingo game JS</h3>
+                        <p>Bingo game made in Javascript and using bootstrap for the UI</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Vanilla</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Html</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://github.com/lrolando/ProyectoFinalReact" style="text-decoration: none;" target="_blank">
+                    <div class="project-card">
+                        <h3>E-Commerce React</h3>
+                        <p>React application in javascript, using firestore as database for the items and the cart.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <a href="mailto:lucianorolando279@gmail.com">
+                    <h3>Email</h3>
+                    lucianorolando279@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:+5493492590556">
+                    <h3>Phone</h3>
+                    +54 9 3492 590556</a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.linkedin.com/in/luciano-rolando-desarrollador-cs-sql/" target="_blank">
+                    <h3>LinkedIn</h3>
+                    linkedin.com/in/luciano-rolando-desarrollador-cs-sql/</a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://github.com/lrolando/" target="_blank">
+                    <h3>GitHub</h3>
+                    github.com/lrolando/</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; Luciano Rolando</p>
+    </footer>
+</body>
+</html>
