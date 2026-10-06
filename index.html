@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luciano Rolando - .NET Developer</title>
+    <title id="page-title">Luciano Rolando - .NET Developer</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
@@ -229,76 +229,186 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        :root {
+            color-scheme: light;
+            --ink: #17233d;
+            --muted: #62708a;
+            --accent: #67e8d2;
+            --accent-dark: #10a99a;
+            --surface: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: radial-gradient(ellipse at 15% 10%, #253c71 0, transparent 38%),
+                linear-gradient(145deg, #101a34 0%, #17264a 55%, #211c46 100%);
+            color: var(--ink);
+            min-height: 100vh;
+        }
+
+        header {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 24px 80px;
+        }
+
+        header h1 {
+            font-size: clamp(2.8rem, 7vw, 5.2rem);
+            letter-spacing: -0.055em;
+            line-height: 1.05;
+            text-shadow: none;
+        }
+
+        header p { color: #d6e1f5; }
+
+        .language-toggle {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.38);
+            border-radius: 999px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            transition: background 180ms ease, transform 180ms ease;
+        }
+
+        .language-toggle:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        .language-toggle:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent) !important;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
+        }
+
+        .container { max-width: 1080px; padding: 0 24px 24px; }
+
+        .section {
+            padding: clamp(24px, 5vw, 48px);
+            margin: 24px 0;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 22px;
+            background: var(--surface);
+            box-shadow: 0 24px 70px rgba(3, 10, 28, 0.2);
+            animation: slideUp 0.65s ease-out both;
+        }
+
+        .intro-section { background: linear-gradient(135deg, #fff 0%, #f0fbfa 100%); }
+        .intro-section p { color: #33425d !important; font-size: 1.12rem !important; line-height: 1.8 !important; }
+
+        .section h2 {
+            color: var(--ink);
+            font-size: clamp(1.7rem, 4vw, 2.25rem);
+            letter-spacing: -0.035em;
+            border-bottom: 1px solid #e5eaf2;
+        }
+
+        .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
+
+        .skill-card {
+            background: linear-gradient(145deg, #1d2d51 0%, #263b68 100%);
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 28px rgba(17, 31, 59, 0.12);
+        }
+
+        .skill-card h3 { color: var(--accent); font-size: 1.08rem; }
+        .skill-card p { color: #e4ebf7; line-height: 1.75; white-space: pre-line; }
+        .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .projects-grid > a { display: block; color: inherit; }
+
+        .project-card {
+            height: 100%;
+            border: 1px solid #e1e8f1;
+            border-radius: 16px;
+            background: #fbfcfe;
+        }
+
+        .project-card:hover { border-color: var(--accent-dark); box-shadow: 0 15px 32px rgba(16, 169, 154, 0.14); }
+        .project-card h3 { color: var(--ink); }
+        .project-card p { color: var(--muted); line-height: 1.7; }
+        .tech-tag { background: #e6f8f5; color: #087f75; font-weight: 700; }
+
+        .contact-item {
+            background: linear-gradient(145deg, #1d2d51 0%, #263b68 100%);
+            box-shadow: 0 12px 24px rgba(17, 31, 59, 0.12);
+        }
+
+        .contact-item a { overflow-wrap: anywhere; }
+        footer { color: #c3cee1; margin-top: 12px; }
+
+        @media (max-width: 700px) {
+            header { padding: 100px 20px 55px; }
+            .container { padding: 0 16px 16px; }
+            .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+            .contact-info { gap: 14px; }
+            .contact-item { flex: 1 1 100%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
     </style>
 </head>
 <body>
     <header>
+        <button class="language-toggle" id="language-toggle" type="button" lang="de" aria-label="Auf Deutsch wechseln">Deutsch</button>
         <h1>Luciano Rolando</h1>
-        <p>  .NET Developer | 
+        <p><span id="role">.NET Developer</span> |
             <a href="LucianoRolandoCV.pdf" class="download-btn" download="LucianoRolandoCV.pdf" target="_blank">
-                <i class="fas fa-download"></i> Resume
+                <i class="fas fa-download" aria-hidden="true"></i> <span id="resume-label">Resume</span>
             </a>
         </p>
     </header>
 
     <div class="container">
-        <section class="section">
-            <p style="font-size: 1.2em; text-align: center; color: #101010; line-height: 1;">
-                Software Developer with +3 years of experience in DotNet and SQL. Mainly backend and database developer working with Agile methodologies, applying SCRUM. Always looking forward to personal and profesional growth. Proactive person, and really interested in everything related to quality, agile frameworks, and automation. 
-                English level upper-intermediate, and constantly practicing it.
-            </p>
+        <section class="section intro-section">
+            <p id="intro-text">Software Developer with 4+ years of experience in .NET and SQL. Mainly focused on backend and database development, using Agile methodologies and SCRUM. Always looking to grow professionally and personally. Proactive, with a strong interest in quality, agile frameworks, and automation. Upper-intermediate English, which I continue to practice.</p>
         </section>
 
         <section class="section">
-            <h2>Experience</h2>
+            <h2 id="experience-heading">Experience</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>January 2025 - Present</h3>
-                    <p>
-                        I work as a contractor for an insurance broker system.
-                        Development of new features for insurance quotes in an Angular frontend(news Pages, news Modals).
-                        Development of new backend services (C#, .NET 8)
-                        Support and maintenance of server (dedicated server) on Jenkins(Rollback and server monitoring)
-                    </p>
+                    <h3 id="experience-date-1">June 2024 - June 2025</h3>
+                    <p id="experience-text-1">Contractor working on an insurance broker platform. Developing insurance quote features for an Angular frontend (pages and modals), building backend services with C# and .NET 8, and maintaining a dedicated server through Jenkins, including rollbacks and monitoring.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>May 2023 - December 2024</h3>
-                    <p>
-                        Support work for internal and external management applications at Volotea airline. Bug fixes, modification of business requirements, new functionalities, developments, etc.
-                        Backend applications in .net, Reports with large SQL queries and SPA Angular applications. Hired through Kiteris.
-                    </p>
+                    <h3 id="experience-date-2">May 2023 - March 2024</h3>
+                    <p id="experience-text-2">Supported internal and external management applications for Volotea, including bug fixes, business requirement changes, and new features. Worked on .NET backend applications, reports with complex SQL queries, and Angular SPAs. Employed through Kiteris.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>September 2022 - April 2023</h3>
-                    <p>
-                        Works as a dotnet developer in a project started from scratch for the company “ROSS Outside the Box”.
-                        Project to manage notaries, acts of purchase and sale of real estate for the Cordoba province Government Backend developed in .Net6, database in Oracle and EntityFramework as ORM (CodeFirst).
-                        Use of agile methodologies to manage tasks and delivery times
-                    </p>
+                    <h3 id="experience-date-3">September 2022 - April 2023</h3>
+                    <p id="experience-text-3">Worked as a .NET developer on a project built from scratch for ROSS Outside the Box: a platform for managing notaries and real-estate purchase and sale deeds for the Government of Córdoba Province. The backend used .NET 6, Oracle, and Entity Framework (Code First), with Agile methods for task and delivery management.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>March 2021 - August 2022</h3>
-                    <p>
-                        Completed a .Net academy before started working, where was learned many tools, libraries, techniques and best practices for programming in .Net
-                        Worked creating new projects, new features and fixes for new systems and providing support to these systems and some existing systems. Worked with T-SQL(SQL Server), C# (.Net Core 3.1) (Visual Studio and Visual Studio Code) and AWS tools mainly
-                        Worked on the support and improvements of a system that manages the hiring process for jobs.
-                        Worked on the planning and development of a new job recruitment system started from scratch.
-                        Worked and collaborated in many recruitment systems.
-                        Also worked on a system that allows some files to be migrated for long-term archiving
-                        The project team used scrum methodology. In each sprint, we manage all the user stories through PBIs in Azure, which we also upload tasks to. The merges to the main branch were always done through a pull request that we reviewed and approved or commented on improvements to merge the best possible code. We did Dailies every day. Also in every sprint we did the meetings of "Preplanning", "Planning", "Retrospective", “Refinement”, etc
-                    </p>
+                    <h3 id="experience-date-4">March 2021 - August 2022</h3>
+                    <p id="experience-text-4">After completing a .NET academy, I worked on new projects, features, fixes, and support for both new and existing systems. My main tools were T-SQL (SQL Server), C# (.NET Core 3.1), Visual Studio, VS Code, and AWS. I supported and improved a recruitment management system, helped plan and build a new recruitment system from scratch, collaborated across several recruitment projects, and worked on a solution for migrating files to long-term archives. The team followed Scrum, managing user stories and tasks in Azure and reviewing every merge through pull requests. We held daily stand-ups and sprint meetings for pre-planning, planning, retrospectives, and refinement.</p>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2>Projects</h2>
+            <h2 id="projects-heading">Projects</h2>
             <div class="projects-grid">
                 <a href="https://github.com/lrolando/Web3-Api" style="text-decoration: none;" target="_blank">
                     <div class="project-card">
                         <h3>Web3-Api</h3>
-                        <p>Application that allow send, receive, and view the balance of an Ethereum crypto wallet. Can also view market rates.
-                            Built using Nethereum to interact with the Ethereum blockchain</p>
+                        <p id="project-text-1">An application for sending and receiving cryptocurrency, checking an Ethereum wallet balance, and viewing market rates. Built with Nethereum to interact with the Ethereum blockchain.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">.NET Core</span>
                             <span class="tech-tag">Nethereum</span>
@@ -308,9 +418,8 @@
                 </a>
                 <a href="https://github.com/lrolando/BackEndApp" style="text-decoration: none;" target="_blank">
                     <div class="project-card">
-                        <h3>API REST Microservicios</h3>
-                        <p>Backend application made with .Net7 (C#)
-                            Implement clean architecture, SOLID patterns and design patterns like repository, DTOs, dependency injection.
+                        <h3 id="project-title-2">API REST Microservicios</h3>
+                        <p id="project-text-2">A backend application built with .NET 7 and C#. Uses Clean Architecture, SOLID principles, and patterns such as Repository, DTOs, and dependency injection.</p>
                          <div class="tech-tags">
                             <span class="tech-tag">.NET Core</span>
                             <span class="tech-tag">EntityFramework</span>
@@ -320,8 +429,8 @@
                 </a>
                 <a href="https://github.com/lrolando/Bingo-JS" style="text-decoration: none;" target="_blank">
                     <div class="project-card">
-                        <h3>Bingo game JS</h3>
-                        <p>Bingo game made in Javascript and using bootstrap for the UI</p>
+                        <h3 id="project-title-3">Bingo game JS</h3>
+                        <p id="project-text-3">A bingo game built with JavaScript and Bootstrap for the user interface.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Vanilla</span>
@@ -332,8 +441,8 @@
                 </a>
                 <a href="https://github.com/lrolando/ProyectoFinalReact" style="text-decoration: none;" target="_blank">
                     <div class="project-card">
-                        <h3>E-Commerce React</h3>
-                        <p>React application in javascript, using firestore as database for the items and the cart.</p>
+                        <h3 id="project-title-4">E-Commerce React</h3>
+                        <p id="project-text-4">A JavaScript React application that uses Firestore to store products and shopping cart data.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Tailwind</span>
@@ -344,26 +453,26 @@
         </section>
 
         <section class="section">
-            <h2>Contact</h2>
+            <h2 id="contact-heading">Contact</h2>
             <div class="contact-info">
                 <div class="contact-item">
                     <a href="mailto:lucianorolando279@gmail.com">
-                    <h3>Email</h3>
+                    <h3 id="contact-email">Email</h3>
                     lucianorolando279@gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <a href="tel:+5493492590556">
-                    <h3>Phone</h3>
+                    <h3 id="contact-phone">Phone</h3>
                     +54 9 3492 590556</a>
                 </div>
                 <div class="contact-item">
                     <a href="https://www.linkedin.com/in/luciano-rolando-desarrollador-cs-sql/" target="_blank">
-                    <h3>LinkedIn</h3>
+                    <h3 id="contact-linkedin">LinkedIn</h3>
                     linkedin.com/in/luciano-rolando-desarrollador-cs-sql/</a>
                 </div>
                 <div class="contact-item">
                     <a href="https://github.com/lrolando/" target="_blank">
-                    <h3>GitHub</h3>
+                    <h3 id="contact-github">GitHub</h3>
                     github.com/lrolando/</a>
                 </div>
             </div>
@@ -371,8 +480,66 @@
     </div>
 
     <footer>
-        <p>&copy; Luciano Rolando</p>
+        <p>&copy; <span id="footer-name">Luciano Rolando</span></p>
     </footer>
+    <script>
+        const translations = {
+            en: {
+                title: 'Luciano Rolando - .NET Developer', role: '.NET Developer', resume: 'Resume',
+                intro: 'Software Developer with 4 years of experience in .NET and SQL. Mainly focused on backend and database development, using Agile methodologies and SCRUM. Always looking to grow professionally and personally. Proactive, with a strong interest in quality, agile frameworks, and automation. Upper-intermediate English, which I continue to practice.',
+                experience: 'Experience', date1: 'June 2024 - June 2025', text1: 'Contractor working on an insurance broker platform. Developing insurance quote features for an Angular frontend (pages and modals), building backend services with C# and .NET 8, and maintaining a dedicated server through Jenkins, including rollbacks and monitoring.',
+                date2: 'May 2023 - March 2024', text2: 'Supported internal and external management applications for Volotea, including bug fixes, business requirement changes, and new features. Worked on .NET backend applications, reports with complex SQL queries, and Angular SPAs. Employed through Kiteris.',
+                date3: 'September 2022 - April 2023', text3: 'Worked as a .NET developer on a project built from scratch for ROSS Outside the Box: a platform for managing notaries and real-estate purchase and sale deeds for the Government of Córdoba Province. The backend used .NET 6, Oracle, and Entity Framework (Code First), with Agile methods for task and delivery management.',
+                date4: 'March 2021 - August 2022', text4: 'After completing a .NET academy, I worked on new projects, features, fixes, and support for both new and existing systems. My main tools were T-SQL (SQL Server), C# (.NET Core 3.1), Visual Studio, VS Code, and AWS. I supported and improved a recruitment management system, helped plan and build a new recruitment system from scratch, collaborated across several recruitment projects, and worked on a solution for migrating files to long-term archives. The team followed Scrum, managing user stories and tasks in Azure and reviewing every merge through pull requests. We held daily stand-ups and sprint meetings for pre-planning, planning, retrospectives, and refinement.',
+                projects: 'Projects', project1: 'An application for sending and receiving cryptocurrency, checking an Ethereum wallet balance, and viewing market rates. Built with Nethereum to interact with the Ethereum blockchain.',
+                projectTitle2: 'REST API microservices', projectTitle3: 'Bingo game (JS)', projectTitle4: 'E-commerce with React',
+                project2: 'A backend application built with .NET 7 and C#. Uses Clean Architecture, SOLID principles, and patterns such as Repository, DTOs, and dependency injection.', project3: 'A bingo game built with JavaScript and Bootstrap for the user interface.', project4: 'A JavaScript React application that uses Firestore to store products and shopping cart data.',
+                contact: 'Contact', email: 'Email', phone: 'Phone', linkedin: 'LinkedIn', github: 'GitHub', toggle: 'Deutsch', toggleLabel: 'Auf Deutsch wechseln'
+            },
+            de: {
+                title: 'Luciano Rolando - .NET-Entwickler', role: '.NET-Entwickler', resume: 'Lebenslauf',
+                intro: 'Softwareentwickler mit 4 Jahren Erfahrung mit .NET und SQL. Mein Schwerpunkt liegt auf Backend- und Datenbankentwicklung mit agilen Methoden und SCRUM. Ich möchte mich fachlich und persönlich kontinuierlich weiterentwickeln. Ich arbeite proaktiv und interessiere mich besonders für Qualität, agile Frameworks und Automatisierung. Mein Englisch ist auf oberem Mittelstufenniveau und ich übe es regelmäßig.',
+                experience: 'Berufserfahrung', date1: 'Juni 2024 – Juni 2025', text1: 'Als externer Entwickler arbeitete ich an einer Plattform für Versicherungsmakler. Ich entwickelte Funktionen für Versicherungsangebote im Angular-Frontend (Seiten und Modalfenster), erstellte Backend-Dienste mit C# und .NET 8 und betreute einen dedizierten Server über Jenkins, einschließlich Rollbacks und Überwachung.',
+                date2: 'Mai 2023 – März 2024', text2: 'Betreuung interner und externer Verwaltungsanwendungen der Fluggesellschaft Volotea, einschließlich Fehlerbehebungen, Anpassungen fachlicher Anforderungen und neuer Funktionen. Arbeit an .NET-Backends, Berichten mit komplexen SQL-Abfragen und Angular-SPAs. Anstellung über Kiteris.',
+                date3: 'September 2022 – April 2023', text3: 'Als .NET-Entwickler arbeitete ich an einem von Grund auf neu entwickelten Projekt für ROSS Outside the Box: einer Plattform zur Verwaltung von Notariaten und Immobilienkaufverträgen für die Regierung der Provinz Córdoba. Das Backend nutzte .NET 6, Oracle und Entity Framework (Code First); Aufgaben und Liefertermine wurden agil verwaltet.',
+                date4: 'März 2021 – August 2022', text4: 'Nach einer .NET-Akademie arbeitete ich an neuen Projekten und Funktionen, behob Fehler und unterstützte neue sowie bestehende Systeme. Zu meinen wichtigsten Werkzeugen gehörten T-SQL (SQL Server), C# (.NET Core 3.1), Visual Studio, VS Code und AWS. Ich betreute und verbesserte ein Bewerberverwaltungssystem, plante und entwickelte ein neues Recruiting-System von Grund auf, arbeitete in mehreren Recruiting-Projekten mit und unterstützte eine Lösung zur langfristigen Dateiarchivierung. Das Team arbeitete mit Scrum: User Stories und Aufgaben wurden in Azure verwaltet, Zusammenführungen per Pull Request geprüft. Außerdem gab es tägliche Stand-ups und Sprinttermine für Vorplanung, Planung, Retrospektiven und Refinements.',
+                projects: 'Projekte', projectTitle2: 'REST-API-Microservices', projectTitle3: 'Bingospiel (JS)', projectTitle4: 'E-Commerce mit React', project1: 'Eine Anwendung zum Senden und Empfangen von Kryptowährungen, Prüfen des Guthabens einer Ethereum-Wallet und Anzeigen von Marktkursen. Für die Interaktion mit der Ethereum-Blockchain wurde Nethereum verwendet.',
+                project2: 'Eine mit .NET 7 und C# entwickelte Backend-Anwendung. Sie verwendet Clean Architecture, SOLID-Prinzipien und Muster wie Repository, DTOs und Dependency Injection.', project3: 'Ein Bingospiel mit JavaScript und Bootstrap für die Benutzeroberfläche.', project4: 'Eine JavaScript-React-Anwendung, die Firestore zum Speichern von Produkten und Warenkorbdaten nutzt.',
+                contact: 'Kontakt', email: 'E-Mail', phone: 'Telefon', linkedin: 'LinkedIn', github: 'GitHub', toggle: 'English', toggleLabel: 'Switch to English'
+            }
+        };
+
+        const translationTargets = {
+            'page-title': 'title', role: 'role', 'resume-label': 'resume', 'intro-text': 'intro',
+            'experience-heading': 'experience', 'experience-date-1': 'date1', 'experience-text-1': 'text1',
+            'experience-date-2': 'date2', 'experience-text-2': 'text2', 'experience-date-3': 'date3', 'experience-text-3': 'text3',
+            'experience-date-4': 'date4', 'experience-text-4': 'text4', 'projects-heading': 'projects', 'project-text-1': 'project1',
+            'project-title-2': 'projectTitle2', 'project-title-3': 'projectTitle3', 'project-title-4': 'projectTitle4',
+            'project-text-2': 'project2', 'project-text-3': 'project3', 'project-text-4': 'project4', 'contact-heading': 'contact',
+            'contact-email': 'email', 'contact-phone': 'phone', 'contact-linkedin': 'linkedin', 'contact-github': 'github'
+        };
+
+        const languageToggle = document.getElementById('language-toggle');
+        function setLanguage(language) {
+            const copy = translations[language];
+            document.documentElement.lang = language;
+            Object.entries(translationTargets).forEach(([id, key]) => {
+                document.getElementById(id).textContent = copy[key];
+            });
+            languageToggle.textContent = copy.toggle;
+            languageToggle.setAttribute('aria-label', copy.toggleLabel);
+            languageToggle.lang = language === 'de' ? 'en' : 'de';
+            try { localStorage.setItem('portfolio-language', language); } catch (error) { /* Storage can be unavailable in private browsing. */ }
+        }
+
+        languageToggle.addEventListener('click', () => {
+            setLanguage(document.documentElement.lang === 'en' ? 'de' : 'en');
+        });
+
+        let savedLanguage = 'en';
+        try { savedLanguage = localStorage.getItem('portfolio-language') || 'en'; } catch (error) { /* Use English when storage is unavailable. */ }
+        setLanguage(savedLanguage === 'de' ? 'de' : 'en');
+    </script>
 </body>
 
 </html>
